@@ -167,8 +167,8 @@ const TechStack = () => {
   }, []);
 
   return (
-    <div className="techstack">
-      <h2> My Techstack</h2>
+    <div className="Naveenkumar">
+      <h2> My NaveenKumar</h2>
 
       <Canvas
         shadows
