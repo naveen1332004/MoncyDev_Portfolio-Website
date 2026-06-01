@@ -1,11 +1,8 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
-import SplitText from "gsap-trial/SplitText";
+import gsap, { ScrollTrigger, ScrollSmoother, SplitText } from "gsap";
 
 interface ParaElement extends HTMLElement {
   anim?: gsap.core.Animation;
-  split?: SplitText;
+  split?: InstanceType<typeof SplitText>;
 }
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
@@ -77,4 +74,8 @@ export default function setSplitText() {
   });
 
   ScrollTrigger.addEventListener("refresh", () => setSplitText());
+}
+
+export function initialFX() {
+  // ...existing code...
 }
