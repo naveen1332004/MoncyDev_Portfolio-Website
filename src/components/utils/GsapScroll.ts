@@ -1,5 +1,15 @@
 import * as THREE from "three";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import ScrollSmoother from "gsap/ScrollSmoother";
+import SplitText from "gsap/SplitText";
+
+interface ParaElement extends HTMLElement {
+  anim?: gsap.core.Animation;
+  split?: InstanceType<typeof SplitText>;
+}
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
@@ -188,4 +198,22 @@ export function setAllTimeline() {
       0
     );
   }
+}
+
+export default function setSplitText() {
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  if (window.innerWidth < 900) return;
+  
+  const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
+  const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
+  
+  paras.forEach((para) => {
+    const split = new SplitText(para);
+    para.split = split;
+  });
+  
+  titles.forEach((title) => {
+    const split = new SplitText(title);
+    title.split = split;
+  });
 }
