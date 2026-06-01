@@ -8,5 +8,5 @@ declare module 'gsap-trial/SplitText' {
     readonly lines: any[];
     [key: string]: any;
   }
-  export = SplitText;
+  export default SplitText;
 }
